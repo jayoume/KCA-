@@ -1,0 +1,193 @@
+{
+  "qa": [
+    {
+      "question": "무선국검사는 무엇인가요",
+      "answer": "무선국검사는 전파법에 근거하여 무선국을 운용하기 위해서는 모두 검사를 받아야 하는 것을 말합니다",
+      "tags": [
+        "무선국검사"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "무선국검사는 어느 곳에서 실시하나요",
+      "answer": "무선국검사는 전파법에 근거하여 전파진흥원에서 실시합니다",
+      "tags": [
+        "무선국검사",
+        "전파진흥원"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "준공검사는 무엇인가요",
+      "answer": "준공검사는 무선국 허가 후 최초로 실시하는 검사입니다",
+      "tags": [
+        "준공검사"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "변경검사는 무엇인가요",
+      "answer": "변경검사는 준공검사 이후 무선국에 변경사항이 있을 때 실시하는 검사입니다",
+      "tags": [
+        "변경검사"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "정기검사는 무엇인가요",
+      "answer": "정기검사는 준공검사 이후 정기적으로 실시하는 검사입니다",
+      "tags": [
+        "정기검사"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "부산, 울산, 경상남도에서 무선국 검사업무는 어디에서 수행하나요",
+      "answer": "무선국검사는 검사기관인 전파진흥원 부산본부에서 수행합니다",
+      "tags": [
+        "검사 수행",
+        "검사기관"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "부산, 울산, 경상남도에서 무선국 허가업무는 어디에서 수행하나요",
+      "answer": "무선국허가는 허가기관인 부산전파관리소와 울산전파관리소에서 수행합니다",
+      "tags": [
+        "허가 업무",
+        "허가기관"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "허가기관의 관할지역을 알려주세요",
+      "answer": "울산전파관리소의 관할 지역은 울산광역시이고 부산전파관리소의 관할 지역은 부산광역시와 경상남도 전체 지역입니다",
+      "tags": [
+        "허가기관",
+        "관할구역"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "무선국검사의 절차는 어디에 나와있나요",
+      "answer": "무선국검사의 모든 과정은 전파법에 의해 정해집니다",
+      "tags": [
+        "검사 절차",
+        "전파법"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "선박에서 무선국검사를 하는 이유는 무엇인가요",
+      "answer": "선박에서 무선국검사를 실시하는 이유는 혼신과 간섭 등을 예방하여 편리한 전파 사용과 해난사고등 인명안전에 대비하기 위함입니다",
+      "tags": [
+        "검사 이유",
+        "검사 목적"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "검사 안내는 무엇을 안내하는 것인가요",
+      "answer": "검사 안내는 시설자에게 무선국검사의 실시를 안내하는 것입니다",
+      "tags": [
+        "검사 안내"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "검사 안내는 어떻게 이루어지나요",
+      "answer": "검사 안내는 통보, 1 차 독촉, 2 차 독촉이 있으며 우편을 통해 이루어집니다",
+      "tags": [
+        "검사안내 방법"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "시설자는 어떤 사람을 말하는 것인지",
+      "answer": "시설자는 무선국을 소유한 사람입니다",
+      "tags": [
+        "시설자"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "행정처분은 무엇입니까",
+      "answer": "행정처분은 검사안내 기간에 검사에 응하지 않은 무선국을 검사기관에서 허가기관에 통보하는 것입니다",
+      "tags": [
+        "행정처분"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "운용정지는 무엇을 말하는 것입니까",
+      "answer": "운용정지는 검사에 응하지 않은 것에 대한 벌칙으로 무선국 운용을 정지시키는 것입니다",
+      "tags": [
+        "운용정지"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "운용정지 기간에 검사를 받지 않으면 어떻게 되나요",
+      "answer": "운용정지 기간에도 무선국검사가 이루어지지 않은 경우에는 허가취소가 이루어집니다",
+      "tags": [
+        "허가취소"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    },
+    {
+      "question": "허가취소가 될 경우에는 어떻게 해야 될까요",
+      "answer": "허가취소가 되면 다시 무선국허가를 신청하여야 합니다",
+      "tags": [
+        "허가취소",
+        "허가 신청"
+      ],
+      "policy_id": "nan",
+      "version": "nan",
+      "source_url": "nan"
+    }
+  ],
+  "contacts": [
+    {
+      "dept": "선박검사신청",
+      "person": "진제영 사무원",
+      "phone": "051-440-1005",
+      "tags": [
+        "검사신청",
+        "검사안내"
+      ],
+      "note": "평일 09:00~18:00"
+    }
+  ]
+}
