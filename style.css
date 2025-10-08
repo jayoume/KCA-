@@ -53,3 +53,19 @@ footer{color:var(--muted)}
   cursor:pointer;
 }
 .search-box .clear:hover{ background:#f3f4f6; }
+
+
+/* === background image === */
+body {
+  background: url("depositphotos_126190474-stock-photo-light-blue-gradient-background-can.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #111;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
