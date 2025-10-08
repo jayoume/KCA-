@@ -8,7 +8,8 @@ body{
 }
 .container{max-width:860px;margin:0 auto;padding:24px}
 h1{font-size:1.6rem;margin:8px 0 0}
-.sub{color:#555;margin:6px 0 16px}
+/* 제목 아래 2줄 정도 여백 */
+.sub{color:#555;margin:2rem 0 16px}
 
 .search-box{display:flex;gap:8px;margin:12px 0 16px}
 .input-wrap{position:relative;flex:1}
@@ -37,14 +38,15 @@ h1{font-size:1.6rem;margin:8px 0 0}
 .sugg ul{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;padding:0;list-style:none}
 .sugg-btn{border:1px solid #cfd4dc;background:#f9fafb;border-radius:999px;padding:6px 10px;cursor:pointer}
 
+/* 문의처 버튼: 기존 대비 약 70% 크기 */
 .call-btn {
-  margin-top: 14px;
+  margin-top: 12px;
   background:#0a84ff;
   color:#fff;
   border:none;
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:0.95rem;
+  padding:7px 10px;        /* 10x14 → 7x10 */
+  border-radius:7px;        /* 10 → 7 */
+  font-size:0.7rem;         /* 0.95rem → 0.7rem */
   cursor:pointer;
   transition:background .15s ease;
 }

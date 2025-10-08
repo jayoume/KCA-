@@ -182,7 +182,7 @@ function doSearch(){
     best.set(key, Math.max(best.get(key)||0, score));
   });
   const sorted = [...best.entries()].map(([key,score])=>({item:JSON.parse(key),score}))
-    .filter(r=>r.score>0).sort((a,b)=>b.score-a.score);
+    .filter(r=>r.score>0).sort((a,b)=>b.score-a-score);
 
   renderAnswer(sorted, query);
 }
