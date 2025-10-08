@@ -22,7 +22,6 @@ const contactsEl = $("#contacts");
 const contactListEl = $("#contactList");
 const qInput = $("#q");
 const btnSearch = $("#btnSearch");
-const btnClear = document.querySelector("#btnClear");
 
 function norm(s) { return (s || "").toString().toLowerCase().trim(); }
 function tokens(s) { return norm(s).split(/[^가-힣a-z0-9]+/).filter(Boolean); }
@@ -111,7 +110,6 @@ function renderAnswer(resultItems, query) {
     <article class="card">
       <h2>${item.question}</h2>
       <div class="answer">${(item.answer||"").replace(/\n/g, "<br>")}</div>
-      <div class="contact-info"><a href="tel:0514401005">문의처 051-440-1005</a></div>
       
     </article>
   `;
@@ -219,8 +217,6 @@ function doSearch() {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-  
-  
   await loadData();
   btnSearch.addEventListener("click", doSearch);
   qInput.addEventListener("keydown", (e) => {
@@ -228,10 +224,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     if (e.key === "Escape") clearQuery();
   });
   qInput.addEventListener("input", syncClearVisibility);
-  if (typeof btnClear !== "undefined" && btnClear) btnClear.addEventListener("click", clearQuery);
-  syncClearVisibility();
-});
-  qInput.addEventListener("input", syncClearVisibility);
+  const btnClear = document.querySelector("#btnClear");
   if (btnClear) btnClear.addEventListener("click", clearQuery);
   syncClearVisibility();
 });
@@ -239,12 +232,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 function syncClearVisibility(){
-  if (qInput.value.trim()) btnClear.classList.remove("hidden");
-  else btnClear.classList.add("hidden");
+  const btn = document.querySelector("#btnClear");
+  const q = document.querySelector("#q");
+  if (!btn || !q) return;
+  if (q.value.trim()) btn.classList.remove("hidden");
+  else btn.classList.add("hidden");
 }
 function clearQuery(){
-  qInput.value = "";
+  const btn = document.querySelector("#btnClear");
+  const q = document.querySelector("#q");
+  if (!q) return;
+  q.value = "";
   syncClearVisibility();
-  qInput.focus();
+  q.focus();
 }
-
