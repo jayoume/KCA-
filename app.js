@@ -22,7 +22,6 @@ const contactsEl = $("#contacts");
 const contactListEl = $("#contactList");
 const qInput = $("#q");
 const btnSearch = $("#btnSearch");
-const btnClear = document.querySelector("#btnClear");
 
 function norm(s) { return (s || "").toString().toLowerCase().trim(); }
 function tokens(s) { return norm(s).split(/[^가-힣a-z0-9]+/).filter(Boolean); }
@@ -107,12 +106,15 @@ function renderAnswer(resultItems, query) {
   const [top, ...rest] = resultItems.slice(0, 3);
   const item = top.item;
 
+  const policyBlock = item.policy_id || item.source_url || item.version
+    ? `<div class="meta">[근거] ${item.policy_id || "-"}  ${item.version ? "· 개정: " + item.version : ""} ${item.source_url ? `· <a href="${item.source_url}" target="_blank" rel="noopener">원문</a>` : ""}</div>`
+    : "";
+
   const html = `
     <article class="card">
       <h2>${item.question}</h2>
       <div class="answer">${(item.answer||"").replace(/\n/g, "<br>")}</div>
-      <div class="contact-info"><a href="tel:0514401005">문의처 051-440-1005</a></div>
-      
+      ${policyBlock}
     </article>
   `;
   answerEl.insertAdjacentHTML("beforeend", html);
@@ -219,26 +221,9 @@ function doSearch() {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-  
   await loadData();
   btnSearch.addEventListener("click", doSearch);
   qInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") doSearch();
-    if (e.key === "Escape") clearQuery();
   });
-  qInput.addEventListener("input", syncClearVisibility);
-  if (btnClear) btnClear.addEventListener("click", clearQuery);
-  syncClearVisibility();
 });
-});
-
-
-function syncClearVisibility(){
-  if (qInput.value.trim()) btnClear.classList.remove("hidden");
-  else btnClear.classList.add("hidden");
-}
-function clearQuery(){
-  qInput.value = "";
-  syncClearVisibility();
-  qInput.focus();
-}
