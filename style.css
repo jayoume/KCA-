@@ -105,3 +105,17 @@ h1{font-size:1.6rem;margin:8px 0 0}
 .contact .btns .copy,.contact .btns .call{border:1px solid #d0d5dd;background:#fff;border-radius:10px;padding:8px 10px;text-decoration:none;cursor:pointer}
 
 footer{margin-top:24px;color:#667085}
+
+
+/* ------------------------------
+   모바일 화면 전용 조정
+   ------------------------------ */
+@media (max-width: 600px) {
+  .notice-list li {
+    line-height: 1.35;  /* 줄간격 살짝 압축 */
+    font-size: 0.95rem; /* 글자 크기 소폭 축소 */
+  }
+  .notice {
+    padding: 10px 14px; /* 여백 축소로 덩어리감 강화 */
+  }
+}
