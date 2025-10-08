@@ -41,21 +41,15 @@ body{background:var(--bg);color:var(--text)}
 footer{color:var(--muted)}
 
 
-/* === Light Blue Gradient Background === */
-body{
-  min-height:100vh;
-  background: linear-gradient(180deg, #eaf3ff 0%, #f5f8ff 35%, #e7f2ff 100%) !important;
+/* === clear(×) button === */
+.search-box .clear{
+  border:1px solid #d0d5dd;
+  background:#fff;
+  border-radius:12px;
+  padding:12px 14px;
+  min-width:44px;
+  font-size:1.1rem;
+  line-height:1;
+  cursor:pointer;
 }
-
-/* === Input-inside clear (×) button === */
-.search-box{display:flex; gap:8px;}
-.search-box .input-wrap{position:relative; flex:1;}
-.search-box .input-wrap input{width:100%; padding-right:40px;}
-.search-box .input-wrap .clear{
-  position:absolute; right:10px; top:50%; transform:translateY(-50%);
-  width:28px; height:28px; border-radius:9999px; border:0;
-  background:#e5e7eb; color:#333; font-size:16px; line-height:1; cursor:pointer;
-  box-shadow:0 1px 2px rgba(0,0,0,.06);
-}
-.search-box .input-wrap .clear:hover{ background:#dfe3e8; }
-.hidden{ display:none; }
+.search-box .clear:hover{ background:#f3f4f6; }
