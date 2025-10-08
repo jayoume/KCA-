@@ -124,7 +124,6 @@ function renderAnswer(resultItems, query) {
         qInput.value = e.target.dataset.q;
         doSearch();
       });
-    });
   }
 
   // contact hints
@@ -190,7 +189,6 @@ function showContacts(query) {
         alert("복사 실패: 권한을 확인하세요.");
       }
     });
-  });
 }
 
 function doSearch() {
@@ -227,7 +225,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   const btnClear = document.querySelector("#btnClear");
   if (btnClear) btnClear.addEventListener("click", clearQuery);
   syncClearVisibility();
-});
 });
 
 
