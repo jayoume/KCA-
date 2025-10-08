@@ -8,6 +8,8 @@ const contactListEl = $("#contactList");
 const qInput = $("#q");
 const btnSearch = $("#btnSearch");
 const btnClear = $("#btnClear");
+const noticeEl = $("#notice");
+const searchBoxEl = document.querySelector(".search-box");
 
 function norm(s){ return (s||"").toString().toLowerCase().trim(); }
 function tokens(s){ return norm(s).split(/[^가-힣a-z0-9]+/).filter(Boolean); }
@@ -74,31 +76,42 @@ async function loadData(){
     QA = data.qa || [];
     CONTACTS = data.contacts || [];
   }catch(err){
-    answerEl.innerHTML = `<div class='card'><p><strong>초기화 실패:</strong> ${err.message}</p></div>`;
+    answerEl.innerHTML = `<div class="card"><p><strong>초기화 실패:</strong> ${err.message}</p></div>`;
     console.error(err);
   }
+}
+
+function placeNoticeBelowSearch(){
+  if (!noticeEl || !searchBoxEl) return;
+  searchBoxEl.insertAdjacentElement("afterend", noticeEl);
+}
+
+function placeNoticeBelowAnswer(){
+  if (!noticeEl) return;
+  answerEl.insertAdjacentElement("afterend", noticeEl);
 }
 
 function renderAnswer(results, query){
   answerEl.innerHTML = "";
   if (!results.length){
-    answerEl.innerHTML = `<div class='card'><p>해당 내용을 찾지 못했어요. 다른 표현으로 질문해 보세요.</p></div>`;
+    answerEl.innerHTML = `<div class="card"><p>해당 내용을 찾지 못했어요. 다른 표현으로 질문해 보세요.</p></div>`;
     contactsEl.classList.add("hidden");
+    placeNoticeBelowSearch(); // 결과 없으면 검색창 아래로 복귀
     return;
   }
   const [top, ...rest] = results.slice(0,3);
   const item = top.item;
   const html = `
-    <article class='card'>
+    <article class="card">
       <h2>${item.question}</h2>
-      <div class='answer'>${(item.answer||'').replace(/\n/g,'<br>')}</div>
-      <button class='call-btn' onclick=\"window.location.href='tel:0514401005'\">📞 문의처 051-440-1005</button>
+      <div class="answer">${(item.answer||"").replace(/\\n/g,"<br>")}</div>
+      <button class="call-btn" onclick="window.location.href='tel:0514401005'">📞 문의처 051-440-1005</button>
     </article>`;
   answerEl.insertAdjacentHTML("beforeend", html);
 
   if (rest.length){
-    const sugg = rest.map(r => `<li><button class='sugg-btn' data-q='${r.item.question}'>${r.item.question}</button></li>`).join("");
-    answerEl.insertAdjacentHTML("beforeend", `<aside class='sugg'><strong>관련 질문</strong><ul>${sugg}</ul></aside>`);
+    const sugg = rest.map(r => `<li><button class="sugg-btn" data-q="${r.item.question}">${r.item.question}</button></li>`).join("");
+    answerEl.insertAdjacentHTML("beforeend", `<aside class="sugg"><strong>관련 질문</strong><ul>${sugg}</ul></aside>`);
     document.querySelectorAll(".sugg-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         qInput.value = e.target.dataset.q;
@@ -107,7 +120,10 @@ function renderAnswer(results, query){
     });
   }
 
-  const phoneHints = ['연락','전화','번호','담당','상담','문의','문의처','contact','phone'];
+  // 결과가 있으면 안내사항을 답변 아래로 이동
+  placeNoticeBelowAnswer();
+
+  const phoneHints = ["연락","전화","번호","담당","상담","문의","문의처","contact","phone"];
   const needContacts = phoneHints.some(h => norm(query).includes(norm(h)));
   showContacts(needContacts ? query : "");
 }
@@ -139,29 +155,29 @@ function showContacts(query){
 
   contactListEl.innerHTML = sorted.map(r => {
     const c = r.item;
-    return `<li class='contact'>
+    return `<li class="contact">
       <div>
-        <div class='dept'>${c.dept||''}</div>
-        <div class='person'>${c.person? c.person+' ' : ''}<span class='phone'>${c.phone||''}</span></div>
-        ${c.note? `<div class='note'>${c.note}</div>`:''}
+        <div class="dept">${c.dept||""}</div>
+        <div class="person">${c.person? c.person+" " : ""}<span class="phone">${c.phone||""}</span></div>
+        ${c.note? `<div class="note">${c.note}</div>`:""}
       </div>
-      <div class='btns'>
-        <button class='copy' data-text='${(c.phone||'').replace(/"/g,'&quot;')}'>복사</button>
-        <a class='call' href='tel:${(c.phone||'').replace(/-/g,'')}' target='_blank' rel='noopener'>전화</a>
+      <div class="btns">
+        <button class="copy" data-text="${(c.phone||'').replace(/"/g,'&quot;')}">복사</button>
+        <a class="call" href="tel:${(c.phone||'').replace(/-/g,'')}" target="_blank" rel="noopener">전화</a>
       </div>
     </li>`;
   }).join("");
 
   contactsEl.classList.remove("hidden");
 
-  document.querySelectorAll('.copy').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
+  document.querySelectorAll(".copy").forEach(btn => {
+    btn.addEventListener("click", async (e) => {
       try{
         await navigator.clipboard.writeText(e.target.dataset.text);
-        btn.textContent = '복사됨';
-        setTimeout(()=> btn.textContent = '복사', 1200);
+        btn.textContent = "복사됨";
+        setTimeout(()=> btn.textContent = "복사", 1200);
       }catch(err){
-        alert('복사 실패: 권한을 확인하세요.');
+        alert("복사 실패: 권한을 확인하세요.");
       }
     });
   });
@@ -188,23 +204,24 @@ function doSearch(){
 }
 
 function syncClearVisibility(){
-  if (qInput.value.trim()) btnClear.classList.remove('hidden');
-  else btnClear.classList.add('hidden');
+  if (qInput.value.trim()) btnClear.classList.remove("hidden");
+  else btnClear.classList.add("hidden");
 }
 function clearQuery(){
-  qInput.value = '';
+  qInput.value = "";
   syncClearVisibility();
+  placeNoticeBelowSearch(); // 입력 비우면 안내사항 원래 자리로
   qInput.focus();
 }
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener("DOMContentLoaded", async () => {
   await loadData();
-  btnSearch.addEventListener('click', doSearch);
-  qInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') doSearch();
-    if (e.key === 'Escape') clearQuery();
+  btnSearch.addEventListener("click", doSearch);
+  qInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") doSearch();
+    if (e.key === "Escape") clearQuery();
   });
-  qInput.addEventListener('input', syncClearVisibility);
-  btnClear.addEventListener('click', clearQuery);
+  qInput.addEventListener("input", syncClearVisibility);
+  btnClear.addEventListener("click", clearQuery);
   syncClearVisibility();
 });
