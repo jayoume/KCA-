@@ -37,6 +37,19 @@ h1{font-size:1.6rem;margin:8px 0 0}
 .sugg ul{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;padding:0;list-style:none}
 .sugg-btn{border:1px solid #cfd4dc;background:#f9fafb;border-radius:999px;padding:6px 10px;cursor:pointer}
 
+.call-btn {
+  margin-top: 14px;
+  background:#0a84ff;
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:0.95rem;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+.call-btn:hover { background:#006de0; }
+
 #contacts.hidden{display:none}
 #contacts h2{font-size:1.05rem}
 #contactList{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
@@ -46,9 +59,5 @@ h1{font-size:1.6rem;margin:8px 0 0}
 .contact .note{color:#666;font-size:.9rem;margin-top:4px}
 .contact .btns{display:flex;gap:8px}
 .contact .btns .copy,.contact .btns .call{border:1px solid #d0d5dd;background:#fff;border-radius:10px;padding:8px 10px;text-decoration:none;cursor:pointer}
-
-.contact-info{margin-top:10px;text-align:right;font-size:.95rem}
-.contact-info a{color:#0a84ff;text-decoration:none;font-weight:600}
-.contact-info a:hover{text-decoration:underline}
 
 footer{margin-top:24px;color:#667085}

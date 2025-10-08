@@ -1,10 +1,6 @@
-// Fresh, minimal client-side chatbot (no external services).
-// Data only from local data.json (qa + contacts).
-
 let QA = [];
 let CONTACTS = [];
 
-// Helpers
 const $ = (sel) => document.querySelector(sel);
 const answerEl = $("#answer");
 const contactsEl = $("#contacts");
@@ -16,7 +12,6 @@ const btnClear = $("#btnClear");
 function norm(s){ return (s||"").toString().toLowerCase().trim(); }
 function tokens(s){ return norm(s).split(/[^가-힣a-z0-9]+/).filter(Boolean); }
 
-// Simple synonyms map
 const SYN = {
   "연락": ["전화","번호","담당","상담","문의","문의처"],
   "전화": ["연락","번호","상담"],
@@ -79,7 +74,7 @@ async function loadData(){
     QA = data.qa || [];
     CONTACTS = data.contacts || [];
   }catch(err){
-    answerEl.innerHTML = `<div class="card"><p><strong>초기화 실패:</strong> ${err.message}<br>• data.json이 index.html과 같은 폴더에 있는지 확인하세요.</p></div>`;
+    answerEl.innerHTML = `<div class="card"><p><strong>초기화 실패:</strong> ${err.message}</p></div>`;
     console.error(err);
   }
 }
@@ -87,7 +82,7 @@ async function loadData(){
 function renderAnswer(results, query){
   answerEl.innerHTML = "";
   if (!results.length){
-    answerEl.innerHTML = `<div class="card"><p>해당 내용을 찾지 못했어요. 다른 표현으로 질문해 보세요.<br>예: "검사 준비사항", "검사절차", "문의처"</p></div>`;
+    answerEl.innerHTML = `<div class="card"><p>해당 내용을 찾지 못했어요. 다른 표현으로 질문해 보세요.</p></div>`;
     contactsEl.classList.add("hidden");
     return;
   }
@@ -97,7 +92,7 @@ function renderAnswer(results, query){
     <article class="card">
       <h2>${item.question}</h2>
       <div class="answer">${(item.answer||"").replace(/\n/g,"<br>")}</div>
-      <div class="contact-info"><a href="tel:0514401005">문의처 051-440-1005</a></div>
+      <button class="call-btn" onclick="window.location.href='tel:0514401005'">📞 문의처 051-440-1005</button>
     </article>`;
   answerEl.insertAdjacentHTML("beforeend", html);
 
@@ -112,8 +107,7 @@ function renderAnswer(results, query){
     });
   }
 
-  // Contact hints
-  const phoneHints = ["연락", "전화", "번호", "담당", "상담", "문의", "문의처", "contact", "phone"];
+  const phoneHints = ["연락","전화","번호","담당","상담","문의","문의처","contact","phone"];
   const needContacts = phoneHints.some(h => norm(query).includes(norm(h)));
   showContacts(needContacts ? query : "");
 }
