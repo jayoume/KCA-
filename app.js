@@ -106,15 +106,12 @@ function renderAnswer(resultItems, query) {
   const [top, ...rest] = resultItems.slice(0, 3);
   const item = top.item;
 
-  const policyBlock = item.policy_id || item.source_url || item.version
-    ? `<div class="meta">[근거] ${item.policy_id || "-"}  ${item.version ? "· 개정: " + item.version : ""} ${item.source_url ? `· <a href="${item.source_url}" target="_blank" rel="noopener">원문</a>` : ""}</div>`
-    : "";
-
   const html = `
     <article class="card">
       <h2>${item.question}</h2>
       <div class="answer">${(item.answer||"").replace(/\n/g, "<br>")}</div>
-      ${policyBlock}
+      <div class="contact-info"><a href="tel:0514401005">문의처 051-440-1005</a></div>
+      
     </article>
   `;
   answerEl.insertAdjacentHTML("beforeend", html);
