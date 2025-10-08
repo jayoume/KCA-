@@ -220,12 +220,17 @@ function doSearch() {
 
 window.addEventListener("DOMContentLoaded", async () => {
   
+  
   await loadData();
   btnSearch.addEventListener("click", doSearch);
   qInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") doSearch();
     if (e.key === "Escape") clearQuery();
   });
+  qInput.addEventListener("input", syncClearVisibility);
+  if (typeof btnClear !== "undefined" && btnClear) btnClear.addEventListener("click", clearQuery);
+  syncClearVisibility();
+});
   qInput.addEventListener("input", syncClearVisibility);
   if (btnClear) btnClear.addEventListener("click", clearQuery);
   syncClearVisibility();
@@ -242,3 +247,4 @@ function clearQuery(){
   syncClearVisibility();
   qInput.focus();
 }
+
