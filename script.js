@@ -17,21 +17,12 @@ async function loadData() {
   QA = data.qa || [];
   CONTACTS = data.contacts || [];
 
-  - fuse = new Fuse(QA, {
--   includeScore: true,
--   threshold: 0.3,
--   keys: ["question", "answer", "tags", "policy_id"]
-- });
-+ fuse = new Fuse(QA, {
-+   includeScore: true,
-+   shouldSort: true,
-+   threshold: 0.55,         // ↑ 숫자 클수록 더 느슨하게(추천: 0.5~0.6)
-+   distance: 200,           // 단어 위치가 멀어도 허용
-+   ignoreLocation: true,    // 위치 무시 → 표현이 달라도 매칭
-+   minMatchCharLength: 2,   // 너무 짧은 단어는 무시
-+   keys: ["question", "answer", "tags", "policy_id"]
-+ });
-
+  fuse = new Fuse(QA, {
+    includeScore: true,
+    threshold: 0.3, // original stricter setting
+    keys: ["question", "answer", "tags", "policy_id"]
+  });
+}
 
 function renderAnswer(resultItems, query) {
   answerEl.innerHTML = "";
@@ -132,21 +123,10 @@ function showContacts(query) {
 function doSearch() {
   const query = qInput.value.trim();
   if (!query) return;
-- const res = fuse.search(query);
-- renderAnswer(res, query);
-+ const terms = expandQuery(query);
-+ let all = [];
-+ for (const t of terms) all = all.concat(fuse.search(t));
-+ // 중복 제거(같은 항목이 여러 질의에 걸릴 수 있음)
-+ const seen = new Set();
-+ const deduped = [];
-+ for (const r of all) {
-+   const id = r.item.question + "::" + (r.item.policy_id || "");
-+   if (!seen.has(id)) { seen.add(id); deduped.push(r); }
-+ }
-+ renderAnswer(deduped, query);
-}
 
+  const res = fuse.search(query);
+  renderAnswer(res, query);
+}
 
 window.addEventListener("DOMContentLoaded", async () => {
   await loadData();
