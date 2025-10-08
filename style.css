@@ -39,33 +39,3 @@ body{background:var(--bg);color:var(--text)}
 .contact-info a{color:var(--accent);text-decoration:none;font-weight:600}
 .contact-info a:hover{text-decoration:underline}
 footer{color:var(--muted)}
-
-
-/* === clear(×) button === */
-.search-box .clear{
-  border:1px solid #d0d5dd;
-  background:#fff;
-  border-radius:12px;
-  padding:12px 14px;
-  min-width:44px;
-  font-size:1.1rem;
-  line-height:1;
-  cursor:pointer;
-}
-.search-box .clear:hover{ background:#f3f4f6; }
-
-
-/* === background image === */
-body {
-  background: url("depositphotos_126190474-stock-photo-light-blue-gradient-background-can.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: #111;
-}
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(2px);
-  z-index: -1;
-}
