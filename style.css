@@ -24,22 +24,32 @@ h1{font-size:1.6rem;margin:10px 0 0}
 footer{margin-top:24px;color:#667085}
 
 
-/* === Light Blue Gradient Background === */
-body{
-  min-height:100vh;
-  background: linear-gradient(180deg, #eaf3ff 0%, #f5f8ff 35%, #e7f2ff 100%) !important;
+/* === UI refinement overrides === */
+:root{
+  --bg:#f6f7f9; --text:#111; --muted:#667085; --border:#e5e7eb; --card-bg:#fff; --primary:#111; --accent:#0a84ff;
 }
-body::before{content:none !important;}
+body{background:var(--bg);color:var(--text)}
+.container{max-width:880px;padding:24px}
+.search-box input{border-radius:14px;border:1px solid var(--border);padding:14px 16px}
+.search-box button{border-radius:14px;border:1px solid var(--primary);background:var(--primary);color:#fff;font-weight:700;padding:14px 18px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.search-box button:hover{transform:translateY(-1px)}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;box-shadow:0 6px 20px rgba(0,0,0,.06);padding:18px}
+#contacts .contact{border-radius:14px;border:1px solid var(--border);box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.contact-info{margin-top:10px;text-align:right;font-size:.95rem}
+.contact-info a{color:var(--accent);text-decoration:none;font-weight:600}
+.contact-info a:hover{text-decoration:underline}
+footer{color:var(--muted)}
 
-/* === Input-inside clear (×) button === */
-.search-box{display:flex; gap:8px;}
-.search-box .input-wrap{position:relative; flex:1;}
-.search-box .input-wrap input{width:100%; padding-right:40px;}
-.search-box .input-wrap .clear{
-  position:absolute; right:10px; top:50%; transform:translateY(-50%);
-  width:28px; height:28px; border-radius:9999px; border:0;
-  background:#e5e7eb; color:#333; font-size:16px; line-height:1; cursor:pointer;
-  box-shadow:0 1px 2px rgba(0,0,0,.06);
+
+/* === clear(×) button === */
+.search-box .clear{
+  border:1px solid #d0d5dd;
+  background:#fff;
+  border-radius:12px;
+  padding:12px 14px;
+  min-width:44px;
+  font-size:1.1rem;
+  line-height:1;
+  cursor:pointer;
 }
-.search-box .input-wrap .clear:hover{ background:#dfe3e8; }
-.hidden{ display:none; }
+.search-box .clear:hover{ background:#f3f4f6; }
