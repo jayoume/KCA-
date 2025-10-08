@@ -22,7 +22,6 @@ const contactsEl = $("#contacts");
 const contactListEl = $("#contactList");
 const qInput = $("#q");
 const btnSearch = $("#btnSearch");
-const btnClear = document.querySelector("#btnClear");
 
 function norm(s) { return (s || "").toString().toLowerCase().trim(); }
 function tokens(s) { return norm(s).split(/[^가-힣a-z0-9]+/).filter(Boolean); }
@@ -223,21 +222,5 @@ window.addEventListener("DOMContentLoaded", async () => {
   btnSearch.addEventListener("click", doSearch);
   qInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") doSearch();
-  
-  qInput.addEventListener("input", syncClearVisibility);
-  if (btnClear) btnClear.addEventListener("click", clearQuery);
-  qInput.addEventListener("keydown", (e) => { if (e.key === "Escape") clearQuery(); });
-  syncClearVisibility();
+  });
 });
-});
-
-
-function syncClearVisibility(){
-  if (qInput.value.trim()) btnClear.classList.remove("hidden");
-  else btnClear.classList.add("hidden");
-}
-function clearQuery(){
-  qInput.value = "";
-  syncClearVisibility();
-  qInput.focus();
-}
