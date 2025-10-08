@@ -1,44 +1,54 @@
-*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Arial,sans-serif;margin:0;background:#f6f7f9;color:#111}
-.container{max-width:820px;margin:0 auto;padding:20px}
-h1{font-size:1.6rem;margin:10px 0 0}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Arial,sans-serif;
+  color:#111;
+  min-height:100vh;
+  background: linear-gradient(180deg, #eaf3ff 0%, #f5f8ff 35%, #e7f2ff 100%);
+}
+.container{max-width:860px;margin:0 auto;padding:24px}
+h1{font-size:1.6rem;margin:8px 0 0}
 .sub{color:#555;margin:6px 0 16px}
+
 .search-box{display:flex;gap:8px;margin:12px 0 16px}
-.search-box input{flex:1;padding:12px;border:1px solid #d0d5dd;border-radius:12px;font-size:1rem}
-.search-box button{padding:12px 16px;border:1px solid #111;background:#111;color:#fff;border-radius:12px;font-weight:600;cursor:pointer}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:10px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.input-wrap{position:relative;flex:1}
+.input-wrap input{
+  width:100%;padding:12px 44px 12px 12px;
+  border:1px solid #d0d5dd;border-radius:14px;font-size:1rem;background:#fff
+}
+.input-wrap .clear{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:9999px;border:0;background:#e5e7eb;color:#333;
+  font-size:16px;line-height:1;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06)
+}
+.input-wrap .clear:hover{background:#dfe3e8}
+.hidden{display:none}
+
+.search-box button#btnSearch{
+  padding:12px 16px;border:1px solid #111;background:#111;color:#fff;border-radius:14px;font-weight:700;cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.08)
+}
+.search-box button#btnSearch:hover{transform:translateY(-1px)}
+
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:10px 0;box-shadow:0 6px 20px rgba(0,0,0,.06)}
 .card h2{font-size:1.1rem;margin:0 0 8px}
-.answer{line-height:1.6}
-.meta{margin-top:10px;color:#666;font-size:.9rem}
+.answer{line-height:1.65}
 .sugg{background:#fff;border:1px dashed #d2d6db;border-radius:12px;padding:12px;margin-top:8px}
 .sugg ul{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;padding:0;list-style:none}
 .sugg-btn{border:1px solid #cfd4dc;background:#f9fafb;border-radius:999px;padding:6px 10px;cursor:pointer}
+
 #contacts.hidden{display:none}
 #contacts h2{font-size:1.05rem}
 #contactList{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-.contact{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px}
+.contact{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:12px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
 .contact .dept{font-weight:700}
 .contact .person{color:#333;margin-top:2px}
 .contact .note{color:#666;font-size:.9rem;margin-top:4px}
 .contact .btns{display:flex;gap:8px}
 .contact .btns .copy,.contact .btns .call{border:1px solid #d0d5dd;background:#fff;border-radius:10px;padding:8px 10px;text-decoration:none;cursor:pointer}
+
+.contact-info{margin-top:10px;text-align:right;font-size:.95rem}
+.contact-info a{color:#0a84ff;text-decoration:none;font-weight:600}
+.contact-info a:hover{text-decoration:underline}
+
 footer{margin-top:24px;color:#667085}
-
-
-/* === Light Blue Gradient Background === */
-body{
-  min-height:100vh;
-  background: linear-gradient(180deg, #eaf3ff 0%, #f5f8ff 35%, #e7f2ff 100%) !important;
-}
-
-/* === Input-inside clear (×) button === */
-.search-box{display:flex; gap:8px;}
-.search-box .input-wrap{position:relative; flex:1;}
-.search-box .input-wrap input{width:100%; padding-right:40px;}
-.search-box .input-wrap .clear{
-  position:absolute; right:10px; top:50%; transform:translateY(-50%);
-  width:28px; height:28px; border-radius:9999px; border:0;
-  background:#e5e7eb; color:#333; font-size:16px; line-height:1; cursor:pointer;
-  box-shadow:0 1px 2px rgba(0,0,0,.06);
-}
-.search-box .input-wrap .clear:hover{ background:#dfe3e8; }
-.hidden{ display:none; }
