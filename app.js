@@ -188,7 +188,7 @@ async function doSearch(){
   }
   const qvec = await embedText(query);
   const scored = QA.map((item,i)=>({ item, score: cosineSim(qvec, QA_EMBEDS[i]||[]) }));
-  const THRESH = 0.7;
+  const THRESH = 0.5;
   let sorted = scored.filter(r=>r.score>=THRESH).sort((a,b)=>b.score-a.score);
   if (!sorted.length) sorted = scored.sort((a,b)=>b.score-a.score).slice(0,1);
   renderAnswer(sorted, query);
